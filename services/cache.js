@@ -8,7 +8,16 @@ client.get = util.promisify(client.get); // Promisify hget for async/await usage
 
 const exec = mongoose.Query.prototype.exec; // Save reference to original exec function
 
+mongoose.Query.prototype.cache = function () {
+	this.enableCache = true; // Set a flag to indicate that we want to use caching
+	return this; // Return the query object for chaining
+};
+
 mongoose.Query.prototype.exec = async function () {
+	if (!this.enableCache) {
+		return exec.apply(this, arguments); // If caching is not enabled, call original exec function
+	}
+
 	const key = JSON.stringify(
 		Object.assign({}, this.getQuery(), {
 			collection: this.mongooseCollection.name,
