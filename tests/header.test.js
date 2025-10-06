@@ -30,22 +30,6 @@ test('Clicking login starts OAuth flow', async () => {
 test('When signed in, shows logout button', async () => {
   const id = '68c054fdd44c9242a5bbbd40';
 
-  const { Buffer } = require('buffer');
-  const sessionObject = {
-    passport: {
-      user: id,
-    },
-  };
-
-  const sessionString = Buffer.from(JSON.stringify(sessionObject)).toString(
-    'base64'
-  );
-
-  const Keygrip = require('keygrip');
-  const keys = require('../config/keys');
-  const keygrip = new Keygrip([keys.cookieKey]);
-  const sig = keygrip.sign('session=' + sessionString);
-
   await page.setCookie({ name: 'session', value: sessionString });
   await page.setCookie({ name: 'session.sig', value: sig });
 
