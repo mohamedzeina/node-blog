@@ -32,6 +32,10 @@ class CustomPage {
     await this.page.goto('http://localhost:3000'); // Refresh the page to simulate logging in
     await this.page.waitFor('a[href="/auth/logout"]'); // Wait for the logout button to appear
   }
+
+  async getContentsOf(selector) {
+    return this.page.$eval(selector, (el) => el.innerHTML);
+  }
 }
 
 module.exports = CustomPage;
