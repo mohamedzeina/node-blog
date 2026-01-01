@@ -5,9 +5,7 @@
   "main": "index.js",
   "jest": {
     "testEnvironment": "node",
-    "setupFilesAfterEnv": [
-      "<rootDir>/tests/setup.js"
-    ]
+    "setupTestFrameworkScriptFile": "<rootDir>/tests/setup.js"
   },
   "scripts": {
     "start": "node index.js",
