@@ -22,6 +22,21 @@ describe('When logged in', async () => {
 		expect(label).toEqual('Blog Title');
 	});
 
+	describe('And using valid inputs', async () => {
+		beforeEach(async () => {
+			await page.type('.title input', 'Test Blog');
+			await page.type('.content input', 'This is a test blog content');
+			await page.click('form button');
+		});
+
+		test('Submitting takes user to review screen', async () => {
+			const confirmationHeader = await page.getContentsOf('h5');
+			expect(confirmationHeader).toEqual('Please confirm your entries');
+		});
+
+		test('Submitting then saving adds blog to index page', async () => {});
+	});
+
 	describe('And using invalid inputs', async () => {
 		beforeEach(async () => {
 			await page.click('form button');
