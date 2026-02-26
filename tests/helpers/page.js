@@ -65,6 +65,14 @@ class CustomPage {
 			bodyData,
 		);
 	}
+
+	execRequests(actions) {
+		return Promise.all(
+			actions.map(({ method, path, data }) => {
+				return this[method](path, data);
+			}),
+		);
+	}
 }
 
 module.exports = CustomPage;
