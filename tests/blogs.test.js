@@ -11,7 +11,7 @@ afterEach(async () => {
 	await page.close();
 });
 
-describe('When logged in', async () => {
+describe('When logged in', () => {
 	beforeEach(async () => {
 		await page.login();
 		await page.click('a.btn-floating');
@@ -22,7 +22,7 @@ describe('When logged in', async () => {
 		expect(label).toEqual('Blog Title');
 	});
 
-	describe('And using valid inputs', async () => {
+	describe('And using valid inputs', () => {
 		beforeEach(async () => {
 			await page.type('.title input', 'Test Blog');
 			await page.type('.content input', 'This is a test blog content');
@@ -46,7 +46,7 @@ describe('When logged in', async () => {
 		});
 	});
 
-	describe('And using invalid inputs', async () => {
+	describe('And using invalid inputs', () => {
 		beforeEach(async () => {
 			await page.click('form button');
 		});
@@ -61,7 +61,7 @@ describe('When logged in', async () => {
 	});
 });
 
-describe('When not logged in', async () => {
+describe('When not logged in', () => {
 	test('Blog related actions are prohibited', async () => {
 		const actions = [
 			{
