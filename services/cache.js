@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const redis = require('redis');
 const util = require('util');
+const keys = require('../config/keys');
 
-const redisUrl = 'redis://127.0.0.1:6379';
+const redisUrl = keys.redisUrl;
 const client = redis.createClient(redisUrl);
 client.hget = util.promisify(client.hget); // Promisify hget for async/await usage
 
@@ -22,7 +23,7 @@ mongoose.Query.prototype.exec = async function () {
 	const key = JSON.stringify(
 		Object.assign({}, this.getQuery(), {
 			collection: this.mongooseCollection.name,
-		})
+		}),
 	); // Create a unique key for the query
 
 	// Check if we have a cached value for this key
