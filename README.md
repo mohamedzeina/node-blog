@@ -116,7 +116,7 @@ node-blog/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/node-blog.git
+git clone https://github.com/mohamedzeina/node-blog.git
 cd node-blog
 ```
 
@@ -128,7 +128,7 @@ Create `config/dev.js` (this file is git-ignored):
 module.exports = {
   googleClientID: 'YOUR_GOOGLE_CLIENT_ID',
   googleClientSecret: 'YOUR_GOOGLE_CLIENT_SECRET',
-  mongoURI: 'mongodb://127.0.0.1:27017/advNode_blog',
+  mongoURI: 'mongodb+srv://<username>:<password>@<cluster>.mongodb.net/advNode_blog',
   cookieKey: 'some-random-secret-string',
   redisUrl: 'redis://127.0.0.1:6379',
   accessKeyId: 'YOUR_AWS_ACCESS_KEY_ID',
@@ -218,8 +218,3 @@ GitHub Actions runs the full test suite on every push and pull request to `main`
 | `ACCESS_KEY_ID` | AWS access key ID |
 | `SECRET_ACCESS_KEY` | AWS secret access key |
 
----
-
-## License
-
-ISC
