@@ -12,13 +12,13 @@ afterEach(async () => {
 });
 
 test('The header has the correct text', async () => {
-  const text = await page.getContentsOf('a.brand-logo');
+  const text = await page.getContentsOf('a[href="/"]');
 
   expect(text).toEqual('Blogster');
 });
 
 test('Clicking login starts OAuth flow', async () => {
-  await page.click('.right a');
+  await page.click('a[href="/auth/google"]');
 
   const url = await page.url();
 

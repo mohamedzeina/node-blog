@@ -37,7 +37,7 @@ class BlogFormReview extends Component {
   render() {
     return (
       <div className="max-w-xl">
-        <h2 className="font-serif font-bold text-3xl text-gray-900 mb-8">Review Your Post</h2>
+        <h5 className="font-serif font-bold text-3xl text-gray-900 mb-8">Review Your Post</h5>
         <form onSubmit={this.onSubmit.bind(this)}>
           <div className="border border-gray-200 bg-white p-6 mb-6">
             {this.renderFields()}

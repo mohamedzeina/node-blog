@@ -14,7 +14,7 @@ afterEach(async () => {
 describe('When logged in', () => {
 	beforeEach(async () => {
 		await page.login();
-		await page.click('a.btn-floating');
+		await page.click('a[href="/blogs/new"]');
 	});
 
 	test('Can see blog create form', async () => {
@@ -31,14 +31,14 @@ describe('When logged in', () => {
 
 		test('Submitting takes user to review screen', async () => {
 			const confirmationHeader = await page.getContentsOf('h5');
-			expect(confirmationHeader).toEqual('Please confirm your entries');
+			expect(confirmationHeader).toEqual('Review Your Post');
 		});
 
 		test('Submitting then saving adds blog to index page', async () => {
-			await page.click('button.green');
+			await page.click('button[type="submit"]');
 			await page.waitFor('.card');
 
-			const title = await page.getContentsOf('.card-title');
+			const title = await page.getContentsOf('.blog-title');
 			const content = await page.getContentsOf('p');
 
 			expect(title).toEqual('Test Blog');
@@ -52,8 +52,8 @@ describe('When logged in', () => {
 		});
 
 		test('The form shows an error message', async () => {
-			const titleError = await page.getContentsOf('.title .red-text');
-			const contentError = await page.getContentsOf('.content .red-text');
+			const titleError = await page.getContentsOf('.title .field-error');
+			const contentError = await page.getContentsOf('.content .field-error');
 
 			expect(titleError).toEqual('You must provide a value');
 			expect(contentError).toEqual('You must provide a value');

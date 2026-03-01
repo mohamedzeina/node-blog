@@ -27,7 +27,7 @@ class BlogList extends Component {
             key={blog._id}
             className="bg-white border border-gray-200 p-6 hover:shadow-md transition-shadow duration-200"
           >
-            <h2 className="font-serif font-bold text-xl text-gray-900 mb-2 leading-snug">
+            <h2 className="font-serif font-bold text-xl text-gray-900 mb-2 leading-snug blog-title">
               {blog.title}
             </h2>
             <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-3">
