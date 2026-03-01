@@ -60,7 +60,7 @@ class BlogFormReview extends Component {
 
 				<h5>Upload an image for your blog</h5>
 				<input
-					onChange={this.fileOnChange.bind(this)}
+					onChange={this.onFileChange.bind(this)}
 					type="file"
 					accept="image/*"
 				/>
