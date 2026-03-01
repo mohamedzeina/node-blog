@@ -16,16 +16,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="bg-gray-50 min-h-screen font-sans">
         <BrowserRouter>
           <div>
             <Header />
-            <Switch>
-              <Route path="/blogs/new" component={BlogNew} />
-              <Route exact path="/blogs/:_id" component={BlogShow} />
-              <Route path="/blogs" component={Dashboard} />
-              <Route path="/" component={Landing} />
-            </Switch>
+            <div className="max-w-4xl mx-auto px-4 py-8">
+              <Switch>
+                <Route path="/blogs/new" component={BlogNew} />
+                <Route exact path="/blogs/:_id" component={BlogShow} />
+                <Route path="/blogs" component={Dashboard} />
+                <Route path="/" component={Landing} />
+              </Switch>
+            </div>
           </div>
         </BrowserRouter>
       </div>

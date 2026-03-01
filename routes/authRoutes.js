@@ -12,13 +12,19 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      res.redirect('/blogs');
+      const redirect = ['production', 'ci'].includes(process.env.NODE_ENV)
+        ? '/blogs'
+        : 'http://localhost:3000/blogs';
+      res.redirect(redirect);
     }
   );
 
   app.get('/auth/logout', (req, res) => {
     req.logout();
-    res.redirect('/');
+    const redirect = ['production', 'ci'].includes(process.env.NODE_ENV)
+      ? '/'
+      : 'http://localhost:3000';
+    res.redirect(redirect);
   });
 
   app.get('/api/current_user', (req, res) => {

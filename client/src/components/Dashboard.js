@@ -5,12 +5,16 @@ import BlogList from './blogs/BlogList';
 const Dashboard = () => {
   return (
     <div>
-      <BlogList />
-      <div className="fixed-action-btn">
-        <Link to="/blogs/new" className="btn-floating btn-large red">
-          <i className="material-icons">add</i>
+      <div className="flex items-center justify-between mb-8 pb-4 border-b border-gray-200">
+        <h1 className="font-serif font-bold text-4xl text-gray-900">My Blogs</h1>
+        <Link
+          to="/blogs/new"
+          className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5 py-2 transition-colors duration-200 text-sm tracking-wide uppercase"
+        >
+          + New Post
         </Link>
       </div>
+      <BlogList />
     </div>
   );
 };

@@ -2,12 +2,17 @@ import React from 'react';
 
 export default ({ input, label, meta: { error, touched } }) => {
   return (
-    <div className={input.name}>
-      <label>{label}</label>
-      <input {...input} style={{ marginBottom: '5px' }} />
-      <div className="red-text" style={{ marginBottom: '20px' }}>
-        {touched && error}
-      </div>
+    <div className="mb-6">
+      <label className="block text-sm font-semibold text-gray-700 mb-1 tracking-wide uppercase">
+        {label}
+      </label>
+      <input
+        {...input}
+        className="w-full border border-gray-300 px-3 py-2 text-gray-900 focus:outline-none focus:border-red-500 transition-colors duration-200 bg-white"
+      />
+      {touched && error && (
+        <p className="text-red-600 text-sm mt-1">{error}</p>
+      )}
     </div>
   );
 };
